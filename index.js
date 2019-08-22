@@ -3,7 +3,6 @@ const { readFile, writeFile, existsSync } = require('fs');
 const { join } = require('path');
 
 if (!process.argv[2] || !process.argv[3]) {
-  console.error('Please provide language or draw.io xml for translation')
   console.log('Usage: translate-drawio lang xml')
   console.log('Example: translate-drawio cn.json ./react-developer-roadmap.xml > ./react-developer-roadmap-cn.xml');
   process.exit(1);
