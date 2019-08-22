@@ -5,14 +5,14 @@ const { join } = require('path');
 if (!process.argv[2] || !process.argv[3]) {
   console.error('Please provide language or draw.io xml for translation')
   console.log('Usage: translate-drawio lang xml')
-  console.log('Example: translate-drawio cn ./react-developer-roadmap.xml');
+  console.log('Example: translate-drawio cn.json ./react-developer-roadmap.xml > ./react-developer-roadmap-cn.xml');
   process.exit(1);
 }
 
 const lang = process.argv[2].toLowerCase();
 const path = process.argv[3]
 
-if (!existsSync(`./${lang}.json`)) {
+if (!existsSync(lang)) {
   console.error('Make sure that file with translation exists')
   process.exit(1);
 }
@@ -23,7 +23,7 @@ function escapeRegExp(str) {
 
 readFile(path, 'utf-8', (error, xmlData) => {
   if (!error) {
-    readFile(join(__dirname, `./${lang}.json`), 'utf-8', (error, translationsFile) => {
+    readFile(lang, 'utf-8', (error, translationsFile) => {
       if (!error) {
         const translations = JSON.parse(translationsFile);
 
@@ -34,11 +34,7 @@ readFile(path, 'utf-8', (error, xmlData) => {
             `value="${translations[key]}"`
           )
         );
-        writeFile(`${path}-${lang}.xml`, translatedXML, 'utf-8', error => {
-          if (!error) {
-            console.log(`Translated to ${lang}`);
-          }
-        });
+        console.log(translatedXML)
       }
     });
   }
