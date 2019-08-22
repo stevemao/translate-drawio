@@ -2,7 +2,7 @@
   "name": "translate-drawio",
   "version": "0.0.0",
   "description": "Translate your draw.io diagrams easily az",
-  "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
