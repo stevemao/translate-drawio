@@ -1,6 +1,6 @@
 {
   "name": "translate-drawio",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Translate your draw.io diagrams easily az",
   "bin": "index.js",
   "scripts": {
